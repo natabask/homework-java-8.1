@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
 
-
     // Количество станций по умолчанию, конструктор без аргументов
     Radio radio = new Radio();
 
