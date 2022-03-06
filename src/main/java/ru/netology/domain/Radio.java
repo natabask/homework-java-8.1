@@ -1,23 +1,37 @@
 package ru.netology.domain;
 
-public class Radio {
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
+@AllArgsConstructor
+@Data
+public class Radio {
     private int currentStationNumber;
     private int currentVolume;
+    private int stationAmount = 10;
+    private int minVolume = 0;
+    private int maxVolume = 100;
 
-    public int getCurrentStationNumber() {
-        return currentStationNumber;
-    }
-
+    // Сеттер с логикой
     public void setCurrentStationNumber(int currentStationNumber) {
-        if (currentStationNumber > 9) {
+        if (currentStationNumber > (stationAmount - 1)) {
             return;
         }
         this.currentStationNumber = currentStationNumber;
     }
 
+    // Конструктор без аргументов
+    public Radio() {
+    }
+
+    // Конструктор c 1 аргументом - количество станций
+    public Radio(int stationAmount) {
+        this.stationAmount = stationAmount;
+    }
+
+    // Методы
     public void next() {
-        if (currentStationNumber < 9) {
+        if (currentStationNumber < (stationAmount - 1)) {
             currentStationNumber = currentStationNumber + 1;
         } else {
             currentStationNumber = 0;
@@ -28,26 +42,18 @@ public class Radio {
         if (currentStationNumber > 0) {
             currentStationNumber = currentStationNumber - 1;
         } else {
-            currentStationNumber = 9;
+            currentStationNumber = (stationAmount - 1);
         }
     }
 
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
-
-    public void setCurrentVolume(int currentVolume) {
-        this.currentVolume = currentVolume;
-    }
-
     public void increaseVolume() {
-        if (currentVolume < 10) {
+        if (currentVolume < maxVolume) {
             currentVolume = currentVolume + 1;
         }
     }
 
     public void decreaseVolume() {
-        if (currentVolume > 0) {
+        if (currentVolume > minVolume) {
             currentVolume = currentVolume - 1;
         }
     }
