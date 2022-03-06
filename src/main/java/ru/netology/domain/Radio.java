@@ -2,9 +2,8 @@ package ru.netology.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class Radio {
     private int currentStationNumber;
@@ -19,6 +18,10 @@ public class Radio {
             return;
         }
         this.currentStationNumber = currentStationNumber;
+    }
+
+    // Конструктор без аргументов
+    public Radio() {
     }
 
     // Конструктор c 1 аргументом - количество станций
